@@ -19,8 +19,13 @@ CSV_FILE = SAVE_DIR / "mark_log.csv"
 
 ERROR_FILE = SAVE_DIR / "error_log.txt"
 
+from datetime import timedelta
+
 # 初始化文件头
-for file in [CSV_FILE, DAILY_FILE]:
+now_dt = datetime.utcnow() + timedelta(hours=8)
+today_file = SAVE_DIR / f"daily_log_{now_dt.strftime('%Y-%m-%d')}.csv"
+
+for file in [CSV_FILE, today_file]:
     if not file.exists():
         with open(file, "w", newline='', encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -217,7 +222,8 @@ def mark():
         return render_with_files(msg)
     except Exception as e:
         with open(ERROR_FILE, "a", encoding="utf-8") as ef:
-            ef.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 打标失败: {e}\n")
+            ef.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 打标失败: {e}
+")
         return render_with_files(f"打标失败: {e}")
 
 @app.route("/set_id", methods=["POST"])
@@ -294,7 +300,7 @@ def delete_last():
             msg = "✅ 已删除今日最后一条记录"
     except Exception as e:
         msg = f"删除失败: {e}"
-    return render_template_string(HTML_PAGE, message=msg)
+    return render_with_files(msg)
 
 @app.route("/download_selected", methods=["POST"])
 @requires_auth
