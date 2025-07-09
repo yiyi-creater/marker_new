@@ -269,8 +269,8 @@ def clear_log():
 def clear_today():
     try:
         from datetime import timedelta
-    today_file = SAVE_DIR / f"daily_log_{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d')}.csv"
-    with open(today_file, "w", newline='', encoding="utf-8") as f:
+        today_file = SAVE_DIR / f"daily_log_{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d')}.csv"
+        with open(today_file, "w", newline='', encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["mark_id", "timestamp", "is_simulated"])
         msg = "✅ 今日记录已清空"
@@ -283,8 +283,8 @@ def clear_today():
 def delete_last():
     try:
         from datetime import timedelta
-    today_file = SAVE_DIR / f"daily_log_{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d')}.csv"
-    with open(today_file, "r", encoding="utf-8") as f:
+        today_file = SAVE_DIR / f"daily_log_{(datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d')}.csv"
+        with open(today_file, "r", encoding="utf-8") as f:
             lines = f.readlines()
         if len(lines) <= 1:
             msg = "没有可删除的记录"
