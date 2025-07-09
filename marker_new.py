@@ -222,8 +222,7 @@ def mark():
         return render_with_files(msg)
     except Exception as e:
         with open(ERROR_FILE, "a", encoding="utf-8") as ef:
-            ef.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 打标失败: {e}
-")
+            ef.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 打标失败: {e}\n")
         return render_with_files(f"打标失败: {e}")
 
 @app.route("/set_id", methods=["POST"])
