@@ -8,7 +8,15 @@ app = Flask(__name__)
 
 def render_with_files(message):
     history_files = [f.name for f in SAVE_DIR.glob("daily_log_*.csv")]
-    return render_template_string(HTML_PAGE, message=message, history_files=history_files)
+    history_files.sort(reverse=True)
+    debug_buttons = '''
+      <form action="/debug_force_date/2025-07-02" method="get">
+          <button type="submit" style="background:#6c757d;color:white;margin-top:10px;">生成 2025-07-02 文件</button>
+      </form>
+      <form action="/debug_bulk_dates" method="get">
+          <button type="submit" style="background:#6c757d;color:white;margin-top:10px;">批量生成过去 7 天</button>
+      </form>'''
+    return render_template_string(HTML_PAGE, message=message + debug_buttons, history_files=history_files)
 
 SAVE_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 SAVE_DIR.mkdir(parents=True, exist_ok=True)
