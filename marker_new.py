@@ -149,6 +149,7 @@ HTML_PAGE = """
   <div class="container" style="flex-wrap: wrap; justify-content: center; gap: 2em;">
   <h1>打标 Web 客户端</h1>
   <form action="/mark" method="post">
+    <input type="date" name="simulated_date" placeholder="选择日期" required>
     <button type="submit" style="font-size: 2em; padding: 1em 2em; background-color: #28a745;">📍 打标</button>
 </form>
 <form action="/set_id" method="post">
@@ -212,7 +213,7 @@ def index():
 def mark():
     global current_id
     from datetime import timedelta
-    simulated_date = request.args.get('simulated_date')
+    simulated_date = request.form.get('simulated_date')
     if simulated_date:
         # 如果传递了 simulated_date 参数，就使用它
         now_dt = datetime.strptime(simulated_date, "%Y-%m-%d")  # 转换为 datetime 对象
