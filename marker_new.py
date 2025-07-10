@@ -330,6 +330,35 @@ def download_selected():
     response.headers['Content-Disposition'] = 'attachment; filename=selected_logs.zip'
     return response
 
+@app.route("/debug_force_date/<date_str>")
+@requires_auth
+def debug_force_date(date_str):
+    try:
+        debug_file = SAVE_DIR / f"daily_log_{date_str}.csv"
+        with open(debug_file, "w", newline='', encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["mark_id", "timestamp", "is_simulated"])
+            writer.writerow([9999, f"{date_str} 12:00:00", 1])
+        return redirect(url_for("index"))
+    except Exception as e:
+        return f"❌ 创建失败: {e}"
+
+@app.route("/debug_bulk_dates")
+@requires_auth
+def debug_bulk_dates():
+    try:
+        base_date = datetime.utcnow() + timedelta(hours=8)
+        for i in range(7):
+            date_str = (base_date - timedelta(days=i)).strftime('%Y-%m-%d')
+            debug_file = SAVE_DIR / f"daily_log_{date_str}.csv"
+            with open(debug_file, "w", newline='', encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerow(["mark_id", "timestamp", "is_simulated"])
+                writer.writerow([9999, f"{date_str} 12:00:00", 1])
+        return redirect(url_for("index"))
+    except Exception as e:
+        return f"❌ 批量创建失败: {e}"
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
