@@ -11,7 +11,7 @@ app = Flask(__name__)
 def render_with_files(message):
     history_files = [f.name for f in SAVE_DIR.glob("daily_log_*.csv")]
     history_files.sort(reverse=True)
-    return render_template_string(HTML_PAGE, message=message + debug_buttons, history_files=history_files)
+    return render_template_string(HTML_PAGE, message=message, history_files=history_files)
 
 SAVE_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 SAVE_DIR.mkdir(parents=True, exist_ok=True)
