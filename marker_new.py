@@ -330,7 +330,7 @@ def download_selected():
     response.headers['Content-Disposition'] = 'attachment; filename=selected_logs.zip'
     return response
 
-@app.route("/debug_force_date/<date_str>")
+@app.route("/debug_force_date/<date_str>",methods=["GET"])
 @requires_auth
 def debug_force_date(date_str):
     try:
@@ -343,7 +343,7 @@ def debug_force_date(date_str):
     except Exception as e:
         return f"❌ 创建失败: {e}"
 
-@app.route("/debug_bulk_dates")
+@app.route("/debug_bulk_dates",methods=["GET"])
 @requires_auth
 def debug_bulk_dates():
     try:
