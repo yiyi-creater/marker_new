@@ -181,6 +181,12 @@ HTML_PAGE = """
 <form action="/download_today" method="get">
     <button type="submit" style="background-color:#17a2b8;">⬇ 下载今日记录</button>
 </form>
+<form action="/debug_force_date/2025-07-02" method="get">
+    <button type="submit" style="background:#6c757d;color:white;margin-top:10px;">生成 2025-07-02 文件</button>
+</form>
+<form action="/debug_bulk_dates" method="get">
+    <button type="submit" style="background:#6c757d;color:white;margin-top:10px;">批量生成过去 7 天</button>
+</form>
   </div>
   <div class=\"log\">{{ message }}</div>
 
