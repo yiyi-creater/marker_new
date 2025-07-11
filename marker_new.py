@@ -211,11 +211,10 @@ def index():
 def mark():
     global current_id
     from datetime import timedelta
-    simulated_date = request.form.get('simulated_date')
-    if simulated_date:
-        # 如果传递了 simulated_date 参数，就使用它
+    try:
+        simulated_date = request.form.get('simulated_date')
         now_dt = datetime.strptime(simulated_date, "%Y-%m-%d")  # 转换为 datetime 对象
-    else:
+    except Exception:
         now_dt = datetime.utcnow() + timedelta(hours=8)
     now = now_dt.strftime("%Y-%m-%d %H:%M:%S")
     daily_file = SAVE_DIR / f"daily_log_{now_dt.strftime('%Y-%m-%d')}.csv"
