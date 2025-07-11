@@ -215,7 +215,7 @@ def mark():
         #simulated_date = request.form.get('simulated_date')
         #now_dt = datetime.strptime(simulated_date, "%Y-%m-%d")  # 转换为 datetime 对象
     #except Exception as e:
-        now_dt = datetime.utcnow() + timedelta(hours=8)
+    now_dt = datetime.utcnow() + timedelta(hours=8)
     now = now_dt.strftime("%Y-%m-%d %H:%M:%S")
     daily_file = SAVE_DIR / f"daily_log_{now_dt.strftime('%Y-%m-%d')}.csv"
 
