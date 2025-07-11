@@ -185,7 +185,7 @@ HTML_PAGE = """
 <div class="container">
   <form action="/download_selected" method="post">
     <label style="margin-top: 1em; font-size: 2em;">选择要下载的日期（可多选）</label>
-    <select name="dates" multiple size="5">
+    <select name="dates" multiple size="5" style="width: 100%; min-width: 250px;">
       {% for file in history_files %}
         <option value="{{ file }}">{{ file }}</option>
       {% endfor %}
