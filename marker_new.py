@@ -137,10 +137,12 @@ HTML_PAGE = """
     }
     select {
       width: 100%;
-      padding: 0.4em;
-      margin-top: 0.5em;
-      border-radius: 260px;
+      min-width: 300px;
+      padding: 0.6em;
+      margin-top: 0.6em;
+      border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 1.05em;
     }
   </style>
 </head>
