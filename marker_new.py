@@ -152,7 +152,7 @@ HTML_PAGE = """
   <div class="container" style="flex-wrap: wrap; justify-content: center; gap: 2em;">
   <h1>打标 Web 客户端</h1>
   <form action="/mark" method="post">
-    <input type="date" name="simulated_date" placeholder="选择日期" required>
+    #<input type="date" name="simulated_date" placeholder="选择日期" required>
     <button type="submit" style="font-size: 2em; padding: 1em 2em; background-color: #28a745;">📍 打标</button>
 </form>
 <form action="/set_id" method="post">
