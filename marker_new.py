@@ -137,7 +137,8 @@ HTML_PAGE = """
     }
     select {
       width: 100%;
-      min-width: 350px;
+      min-width: 300px;
+      min-height: 160px;
       padding: 0.6em;
       margin-top: 0.6em;
       border-radius: 6px;
@@ -186,8 +187,8 @@ HTML_PAGE = """
   </div>
 <div class="container">
   <form action="/download_selected" method="post">
-    <label style="margin-top: 0.5em; font-size: 1em;">选择要下载的日期（可多选）</label>
-    <select name="dates" multiple size="6">
+    <label style="margin-top: 0.5em; font-size: 0.5em;">选择要下载的日期（可多选）</label>
+    <select name="dates" multiple size="4">
       {% for file in history_files %}
         <option value="{{ file }}">{{ file }}</option>
       {% endfor %}
