@@ -156,9 +156,6 @@ HTML_PAGE = """
     <input type="number" name="new_id" placeholder="设置起始 ID" required>
     <button type="submit">设置 ID</button>
 </form>
-
-  
-
   <form action="/clear_today" method="post">
     <button type="submit" style="background-color:#fd7e14;">🧹 清空今日记录</button>
 </form>
@@ -183,8 +180,6 @@ HTML_PAGE = """
 </form>
   </div>
   <div class=\"log\">{{ message }}</div>
-
-  
 </body>
   </div>
 <div class="container">
