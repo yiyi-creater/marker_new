@@ -139,7 +139,7 @@ HTML_PAGE = """
       width: 100%;
       padding: 0.4em;
       margin-top: 0.5em;
-      border-radius: 6px;
+      border-radius: 260px;
       border: 1px solid #ccc;
     }
   </style>
